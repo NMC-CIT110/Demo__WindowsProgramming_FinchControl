@@ -34,7 +34,9 @@
             this.btnLeft = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
-            this.chkBoxRed = new System.Windows.Forms.CheckBox();
+            this.chkBoxLEDRed = new System.Windows.Forms.CheckBox();
+            this.chkBoxLEDGreen = new System.Windows.Forms.CheckBox();
+            this.chkBoxLEDBlue = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnFoward
@@ -96,23 +98,47 @@
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
-            // chkBoxRed
+            // chkBoxLEDRed
             // 
-            this.chkBoxRed.AutoSize = true;
-            this.chkBoxRed.Location = new System.Drawing.Point(28, 293);
-            this.chkBoxRed.Name = "chkBoxRed";
-            this.chkBoxRed.Size = new System.Drawing.Size(46, 17);
-            this.chkBoxRed.TabIndex = 6;
-            this.chkBoxRed.Text = "Red";
-            this.chkBoxRed.UseVisualStyleBackColor = true;
-            this.chkBoxRed.CheckedChanged += new System.EventHandler(this.chkBoxRed_CheckedChanged);
+            this.chkBoxLEDRed.AutoSize = true;
+            this.chkBoxLEDRed.Location = new System.Drawing.Point(28, 293);
+            this.chkBoxLEDRed.Name = "chkBoxLEDRed";
+            this.chkBoxLEDRed.Size = new System.Drawing.Size(46, 17);
+            this.chkBoxLEDRed.TabIndex = 6;
+            this.chkBoxLEDRed.Text = "Red";
+            this.chkBoxLEDRed.UseVisualStyleBackColor = true;
+            this.chkBoxLEDRed.CheckedChanged += new System.EventHandler(this.chkBoxLEDRed_CheckedChanged);
+            // 
+            // chkBoxLEDGreen
+            // 
+            this.chkBoxLEDGreen.AutoSize = true;
+            this.chkBoxLEDGreen.Location = new System.Drawing.Point(28, 316);
+            this.chkBoxLEDGreen.Name = "chkBoxLEDGreen";
+            this.chkBoxLEDGreen.Size = new System.Drawing.Size(55, 17);
+            this.chkBoxLEDGreen.TabIndex = 7;
+            this.chkBoxLEDGreen.Text = "Green";
+            this.chkBoxLEDGreen.UseVisualStyleBackColor = true;
+            this.chkBoxLEDGreen.CheckedChanged += new System.EventHandler(this.chkBoxLEDGreen_CheckedChanged);
+            // 
+            // chkBoxLEDBlue
+            // 
+            this.chkBoxLEDBlue.AutoSize = true;
+            this.chkBoxLEDBlue.Location = new System.Drawing.Point(28, 339);
+            this.chkBoxLEDBlue.Name = "chkBoxLEDBlue";
+            this.chkBoxLEDBlue.Size = new System.Drawing.Size(47, 17);
+            this.chkBoxLEDBlue.TabIndex = 8;
+            this.chkBoxLEDBlue.Text = "Blue";
+            this.chkBoxLEDBlue.UseVisualStyleBackColor = true;
+            this.chkBoxLEDBlue.CheckedChanged += new System.EventHandler(this.chkBoxLEDBlue_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 388);
-            this.Controls.Add(this.chkBoxRed);
+            this.Controls.Add(this.chkBoxLEDBlue);
+            this.Controls.Add(this.chkBoxLEDGreen);
+            this.Controls.Add(this.chkBoxLEDRed);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnLeft);
@@ -134,7 +160,9 @@
         private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnQuit;
-        private System.Windows.Forms.CheckBox chkBoxRed;
+        private System.Windows.Forms.CheckBox chkBoxLEDRed;
+        private System.Windows.Forms.CheckBox chkBoxLEDGreen;
+        private System.Windows.Forms.CheckBox chkBoxLEDBlue;
     }
 }
 

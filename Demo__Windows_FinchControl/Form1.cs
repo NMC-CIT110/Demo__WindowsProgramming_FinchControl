@@ -16,7 +16,7 @@ namespace Demo__Windows_FinchControl
         Finch _myFinch;
         int _speed;
         int _LEDRedValue;
-        int _LEGreenValue;
+        int _LEDGreenValue;
         int _LEDBlueValue;
 
 
@@ -55,9 +55,9 @@ namespace Demo__Windows_FinchControl
             Environment.Exit(1);
         }
 
-        private void chkBoxRed_CheckedChanged(object sender, EventArgs e)
+        private void chkBoxLEDRed_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkBoxRed.Checked)
+            if (chkBoxLEDRed.Checked)
             {
                 _LEDRedValue = 255;
             }
@@ -65,11 +65,42 @@ namespace Demo__Windows_FinchControl
             {
                 _LEDRedValue = 0;
             }
+
+            UpdateLED();
+        }
+
+        
+        private void chkBoxLEDGreen_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBoxLEDGreen.Checked)
+            {
+                _LEDGreenValue = 255;
+            }
+            else
+            {
+                _LEDGreenValue = 0;
+            }
+
+            UpdateLED();
+        }
+
+        private void chkBoxLEDBlue_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBoxLEDBlue.Checked)
+            {
+                _LEDBlueValue = 255;
+            }
+            else
+            {
+                _LEDBlueValue = 0;
+            }
+
+            UpdateLED();
         }
 
         private void UpdateLED()
         {
-            _myFinch.setLED(_LEDRedValue, _LEGreenValue, _LEDBlueValue);
+            _myFinch.setLED(_LEDRedValue, _LEDGreenValue, _LEDBlueValue);
         }
     }
 }
