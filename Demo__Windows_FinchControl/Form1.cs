@@ -15,20 +15,61 @@ namespace Demo__Windows_FinchControl
     {
         Finch _myFinch;
         int _speed;
+        int _LEDRedValue;
+        int _LEGreenValue;
+        int _LEDBlueValue;
 
 
         public Form1()
         {
-            Finch myFinch = new Finch();
-            myFinch.connect();
+            _myFinch = new Finch();
+            _myFinch.connect();
+
+            InitializeFinch();
 
             InitializeComponent();
         }
 
+        private void InitializeFinch()
+        {
+            _speed = 200;
+            _LEDRedValue = 0;
+        }
         private void btnFoward_Click(object sender, EventArgs e)
         {
-
+            _myFinch.setMotors(_speed, _speed);
         }
 
+        private void btnBackward_Click(object sender, EventArgs e)
+        {
+            _myFinch.setMotors(-_speed, -_speed);
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            _myFinch.setMotors(0, 0);
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
+        }
+
+        private void chkBoxRed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBoxRed.Checked)
+            {
+                _LEDRedValue = 255;
+            }
+            else
+            {
+                _LEDRedValue = 0;
+            }
+        }
+
+        private void UpdateLED()
+        {
+            _myFinch.setLED(_LEDRedValue, _LEGreenValue, _LEDBlueValue);
+        }
     }
 }
