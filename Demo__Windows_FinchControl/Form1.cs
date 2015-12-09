@@ -102,5 +102,26 @@ namespace Demo__Windows_FinchControl
         {
             _myFinch.setLED(_LEDRedValue, _LEDGreenValue, _LEDBlueValue);
         }
+
+        private void radBtnLEDRed_CheckedChanged(object sender, EventArgs e)
+        {
+            _LEDRedValue = 255;
+            _LEDGreenValue = 0;
+            _LEDBlueValue = 0;
+        }
+
+        private void radBtnGreen_CheckedChanged(object sender, EventArgs e)
+        {
+            _LEDRedValue = 0;
+            _LEDGreenValue = 255;
+            _LEDBlueValue = 0;
+        }
+
+        private void radBtnBlue_CheckedChanged(object sender, EventArgs e)
+        {
+            _LEDRedValue = 0;
+            _LEDGreenValue = 0;
+            _LEDBlueValue = 255;
+        }        
     }
 }

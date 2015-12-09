@@ -37,6 +37,11 @@
             this.chkBoxLEDRed = new System.Windows.Forms.CheckBox();
             this.chkBoxLEDGreen = new System.Windows.Forms.CheckBox();
             this.chkBoxLEDBlue = new System.Windows.Forms.CheckBox();
+            this.grpBoxLED = new System.Windows.Forms.GroupBox();
+            this.radBtnBlue = new System.Windows.Forms.RadioButton();
+            this.radBtnGreen = new System.Windows.Forms.RadioButton();
+            this.radBtnLEDRed = new System.Windows.Forms.RadioButton();
+            this.grpBoxLED.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnFoward
@@ -131,11 +136,59 @@
             this.chkBoxLEDBlue.UseVisualStyleBackColor = true;
             this.chkBoxLEDBlue.CheckedChanged += new System.EventHandler(this.chkBoxLEDBlue_CheckedChanged);
             // 
+            // grpBoxLED
+            // 
+            this.grpBoxLED.Controls.Add(this.radBtnBlue);
+            this.grpBoxLED.Controls.Add(this.radBtnGreen);
+            this.grpBoxLED.Controls.Add(this.radBtnLEDRed);
+            this.grpBoxLED.Location = new System.Drawing.Point(113, 277);
+            this.grpBoxLED.Name = "grpBoxLED";
+            this.grpBoxLED.Size = new System.Drawing.Size(66, 85);
+            this.grpBoxLED.TabIndex = 9;
+            this.grpBoxLED.TabStop = false;
+            // 
+            // radBtnBlue
+            // 
+            this.radBtnBlue.AutoSize = true;
+            this.radBtnBlue.Location = new System.Drawing.Point(6, 60);
+            this.radBtnBlue.Name = "radBtnBlue";
+            this.radBtnBlue.Size = new System.Drawing.Size(46, 17);
+            this.radBtnBlue.TabIndex = 2;
+            this.radBtnBlue.TabStop = true;
+            this.radBtnBlue.Text = "Blue";
+            this.radBtnBlue.UseVisualStyleBackColor = true;
+            this.radBtnBlue.CheckedChanged += new System.EventHandler(this.radBtnBlue_CheckedChanged);
+            // 
+            // radBtnGreen
+            // 
+            this.radBtnGreen.AutoSize = true;
+            this.radBtnGreen.Location = new System.Drawing.Point(6, 37);
+            this.radBtnGreen.Name = "radBtnGreen";
+            this.radBtnGreen.Size = new System.Drawing.Size(54, 17);
+            this.radBtnGreen.TabIndex = 1;
+            this.radBtnGreen.TabStop = true;
+            this.radBtnGreen.Text = "Green";
+            this.radBtnGreen.UseVisualStyleBackColor = true;
+            this.radBtnGreen.CheckedChanged += new System.EventHandler(this.radBtnGreen_CheckedChanged);
+            // 
+            // radBtnLEDRed
+            // 
+            this.radBtnLEDRed.AutoSize = true;
+            this.radBtnLEDRed.Location = new System.Drawing.Point(6, 14);
+            this.radBtnLEDRed.Name = "radBtnLEDRed";
+            this.radBtnLEDRed.Size = new System.Drawing.Size(45, 17);
+            this.radBtnLEDRed.TabIndex = 0;
+            this.radBtnLEDRed.TabStop = true;
+            this.radBtnLEDRed.Text = "Red";
+            this.radBtnLEDRed.UseVisualStyleBackColor = true;
+            this.radBtnLEDRed.CheckedChanged += new System.EventHandler(this.radBtnLEDRed_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 388);
+            this.Controls.Add(this.grpBoxLED);
             this.Controls.Add(this.chkBoxLEDBlue);
             this.Controls.Add(this.chkBoxLEDGreen);
             this.Controls.Add(this.chkBoxLEDRed);
@@ -147,6 +200,8 @@
             this.Controls.Add(this.btnFoward);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.grpBoxLED.ResumeLayout(false);
+            this.grpBoxLED.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,6 +218,10 @@
         private System.Windows.Forms.CheckBox chkBoxLEDRed;
         private System.Windows.Forms.CheckBox chkBoxLEDGreen;
         private System.Windows.Forms.CheckBox chkBoxLEDBlue;
+        private System.Windows.Forms.GroupBox grpBoxLED;
+        private System.Windows.Forms.RadioButton radBtnBlue;
+        private System.Windows.Forms.RadioButton radBtnGreen;
+        private System.Windows.Forms.RadioButton radBtnLEDRed;
     }
 }
 
