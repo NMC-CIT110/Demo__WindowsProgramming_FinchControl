@@ -26,8 +26,23 @@ namespace Demo__Windows_FinchControl
             _myFinch.connect();
 
             InitializeFinch();
+            InitializeTimer();
 
             InitializeComponent();
+        }
+
+        private void InitializeTimer()
+        {
+            Timer timer = new Timer();
+            timer.Interval = (1000);
+            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Start();
+        }
+
+        private void Timer_Tick(object o, EventArgs e)
+        {
+            txtbox_Temperature.Text = _myFinch.getTemperature().ToString();
+            txtbox_LightSensorValue.Text = (_myFinch.getLightSensors().Average().ToString());
         }
 
         private void InitializeFinch()
