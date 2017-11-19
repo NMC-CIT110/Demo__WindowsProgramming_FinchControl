@@ -1,6 +1,6 @@
 ﻿namespace Demo__WinFormsFinchControl
 {
-    partial class Form1
+    partial class WinFormsFinchControl
     {
         /// <summary>
         /// Required designer variable.
