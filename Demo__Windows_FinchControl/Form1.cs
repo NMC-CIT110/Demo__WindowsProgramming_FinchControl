@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FinchAPI;
 
-namespace Demo__WinForms_FinchControl
+namespace Demo__WinFormsFinchControl
 {
     public partial class Form1 : Form
     {

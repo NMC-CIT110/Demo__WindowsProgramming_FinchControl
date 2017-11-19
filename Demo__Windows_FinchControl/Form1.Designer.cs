@@ -1,4 +1,4 @@
-﻿namespace Demo__WinForms_FinchControl
+﻿namespace Demo__WinFormsFinchControl
 {
     partial class Form1
     {

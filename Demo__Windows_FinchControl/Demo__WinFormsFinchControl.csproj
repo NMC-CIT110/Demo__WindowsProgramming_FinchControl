@@ -7,8 +7,8 @@
     <ProjectGuid>{D90E8777-F8BE-455B-8554-224E89CC46EF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Demo__WinForms_FinchControl</RootNamespace>
-    <AssemblyName>Demo__WinForms_FinchControl</AssemblyName>
+    <RootNamespace>Demo__WinFormsFinchControl</RootNamespace>
+    <AssemblyName>Demo__WinFormsFinchControl</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
