@@ -1,4 +1,4 @@
-﻿namespace Demo__Windows_FinchControl
+﻿namespace Demo__WinForms_FinchControl
 {
     partial class Form1
     {
@@ -37,15 +37,14 @@
             this.chkBoxLEDRed = new System.Windows.Forms.CheckBox();
             this.chkBoxLEDGreen = new System.Windows.Forms.CheckBox();
             this.chkBoxLEDBlue = new System.Windows.Forms.CheckBox();
-            this.grpBoxLED = new System.Windows.Forms.GroupBox();
-            this.radBtnBlue = new System.Windows.Forms.RadioButton();
-            this.radBtnGreen = new System.Windows.Forms.RadioButton();
-            this.radBtnLEDRed = new System.Windows.Forms.RadioButton();
-            this.lbl_Temperature = new System.Windows.Forms.Label();
-            this.lbl_LightSensorAverage = new System.Windows.Forms.Label();
-            this.txtbox_Temperature = new System.Windows.Forms.TextBox();
-            this.txtbox_LightSensorValue = new System.Windows.Forms.TextBox();
-            this.grpBoxLED.SuspendLayout();
+            this.lblTemperature = new System.Windows.Forms.Label();
+            this.lblLightSensorAverage = new System.Windows.Forms.Label();
+            this.txtboxTemperature = new System.Windows.Forms.TextBox();
+            this.txtboxLightSensorValue = new System.Windows.Forms.TextBox();
+            this.lblLeftObstacle = new System.Windows.Forms.Label();
+            this.btnLeftObstacleIndicator = new System.Windows.Forms.Button();
+            this.btnRightObstacleIndicator = new System.Windows.Forms.Button();
+            this.lblRightObstacle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnFoward
@@ -79,6 +78,7 @@
             this.btnRight.TabIndex = 2;
             this.btnRight.Text = "Right";
             this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // btnLeft
             // 
@@ -89,6 +89,7 @@
             this.btnLeft.TabIndex = 3;
             this.btnLeft.Text = "Left";
             this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // btnStop
             // 
@@ -149,100 +150,87 @@
             this.chkBoxLEDBlue.UseVisualStyleBackColor = true;
             this.chkBoxLEDBlue.CheckedChanged += new System.EventHandler(this.chkBoxLEDBlue_CheckedChanged);
             // 
-            // grpBoxLED
+            // lblTemperature
             // 
-            this.grpBoxLED.Controls.Add(this.radBtnBlue);
-            this.grpBoxLED.Controls.Add(this.radBtnGreen);
-            this.grpBoxLED.Controls.Add(this.radBtnLEDRed);
-            this.grpBoxLED.Location = new System.Drawing.Point(151, 341);
-            this.grpBoxLED.Margin = new System.Windows.Forms.Padding(4);
-            this.grpBoxLED.Name = "grpBoxLED";
-            this.grpBoxLED.Padding = new System.Windows.Forms.Padding(4);
-            this.grpBoxLED.Size = new System.Drawing.Size(88, 105);
-            this.grpBoxLED.TabIndex = 9;
-            this.grpBoxLED.TabStop = false;
+            this.lblTemperature.AutoSize = true;
+            this.lblTemperature.Location = new System.Drawing.Point(34, 269);
+            this.lblTemperature.Name = "lblTemperature";
+            this.lblTemperature.Size = new System.Drawing.Size(90, 17);
+            this.lblTemperature.TabIndex = 10;
+            this.lblTemperature.Text = "Temperature";
             // 
-            // radBtnBlue
+            // lblLightSensorAverage
             // 
-            this.radBtnBlue.AutoSize = true;
-            this.radBtnBlue.Location = new System.Drawing.Point(8, 74);
-            this.radBtnBlue.Margin = new System.Windows.Forms.Padding(4);
-            this.radBtnBlue.Name = "radBtnBlue";
-            this.radBtnBlue.Size = new System.Drawing.Size(57, 21);
-            this.radBtnBlue.TabIndex = 2;
-            this.radBtnBlue.TabStop = true;
-            this.radBtnBlue.Text = "Blue";
-            this.radBtnBlue.UseVisualStyleBackColor = true;
-            this.radBtnBlue.CheckedChanged += new System.EventHandler(this.radBtnBlue_CheckedChanged);
+            this.lblLightSensorAverage.AutoSize = true;
+            this.lblLightSensorAverage.Location = new System.Drawing.Point(34, 301);
+            this.lblLightSensorAverage.Name = "lblLightSensorAverage";
+            this.lblLightSensorAverage.Size = new System.Drawing.Size(145, 17);
+            this.lblLightSensorAverage.TabIndex = 11;
+            this.lblLightSensorAverage.Text = "Light Sensor Average";
             // 
-            // radBtnGreen
+            // txtboxTemperature
             // 
-            this.radBtnGreen.AutoSize = true;
-            this.radBtnGreen.Location = new System.Drawing.Point(8, 46);
-            this.radBtnGreen.Margin = new System.Windows.Forms.Padding(4);
-            this.radBtnGreen.Name = "radBtnGreen";
-            this.radBtnGreen.Size = new System.Drawing.Size(69, 21);
-            this.radBtnGreen.TabIndex = 1;
-            this.radBtnGreen.TabStop = true;
-            this.radBtnGreen.Text = "Green";
-            this.radBtnGreen.UseVisualStyleBackColor = true;
-            this.radBtnGreen.CheckedChanged += new System.EventHandler(this.radBtnGreen_CheckedChanged);
+            this.txtboxTemperature.Location = new System.Drawing.Point(192, 269);
+            this.txtboxTemperature.Name = "txtboxTemperature";
+            this.txtboxTemperature.Size = new System.Drawing.Size(88, 22);
+            this.txtboxTemperature.TabIndex = 12;
             // 
-            // radBtnLEDRed
+            // txtboxLightSensorValue
             // 
-            this.radBtnLEDRed.AutoSize = true;
-            this.radBtnLEDRed.Location = new System.Drawing.Point(8, 17);
-            this.radBtnLEDRed.Margin = new System.Windows.Forms.Padding(4);
-            this.radBtnLEDRed.Name = "radBtnLEDRed";
-            this.radBtnLEDRed.Size = new System.Drawing.Size(55, 21);
-            this.radBtnLEDRed.TabIndex = 0;
-            this.radBtnLEDRed.TabStop = true;
-            this.radBtnLEDRed.Text = "Red";
-            this.radBtnLEDRed.UseVisualStyleBackColor = true;
-            this.radBtnLEDRed.CheckedChanged += new System.EventHandler(this.radBtnLEDRed_CheckedChanged);
+            this.txtboxLightSensorValue.Location = new System.Drawing.Point(192, 301);
+            this.txtboxLightSensorValue.Name = "txtboxLightSensorValue";
+            this.txtboxLightSensorValue.Size = new System.Drawing.Size(88, 22);
+            this.txtboxLightSensorValue.TabIndex = 13;
             // 
-            // lbl_Temperature
+            // lblLeftObstacle
             // 
-            this.lbl_Temperature.AutoSize = true;
-            this.lbl_Temperature.Location = new System.Drawing.Point(34, 269);
-            this.lbl_Temperature.Name = "lbl_Temperature";
-            this.lbl_Temperature.Size = new System.Drawing.Size(90, 17);
-            this.lbl_Temperature.TabIndex = 10;
-            this.lbl_Temperature.Text = "Temperature";
+            this.lblLeftObstacle.AutoSize = true;
+            this.lblLeftObstacle.Location = new System.Drawing.Point(362, 274);
+            this.lblLeftObstacle.Name = "lblLeftObstacle";
+            this.lblLeftObstacle.Size = new System.Drawing.Size(92, 17);
+            this.lblLeftObstacle.TabIndex = 14;
+            this.lblLeftObstacle.Text = "Left Obstacle";
             // 
-            // lbl_LightSensorAverage
+            // btnLeftObstacleIndicator
             // 
-            this.lbl_LightSensorAverage.AutoSize = true;
-            this.lbl_LightSensorAverage.Location = new System.Drawing.Point(34, 301);
-            this.lbl_LightSensorAverage.Name = "lbl_LightSensorAverage";
-            this.lbl_LightSensorAverage.Size = new System.Drawing.Size(145, 17);
-            this.lbl_LightSensorAverage.TabIndex = 11;
-            this.lbl_LightSensorAverage.Text = "Light Sensor Average";
+            this.btnLeftObstacleIndicator.BackColor = System.Drawing.SystemColors.Info;
+            this.btnLeftObstacleIndicator.Location = new System.Drawing.Point(478, 269);
+            this.btnLeftObstacleIndicator.Name = "btnLeftObstacleIndicator";
+            this.btnLeftObstacleIndicator.Size = new System.Drawing.Size(50, 22);
+            this.btnLeftObstacleIndicator.TabIndex = 15;
+            this.btnLeftObstacleIndicator.UseVisualStyleBackColor = false;
             // 
-            // txtbox_Temperature
+            // btnRightObstacleIndicator
             // 
-            this.txtbox_Temperature.Location = new System.Drawing.Point(206, 269);
-            this.txtbox_Temperature.Name = "txtbox_Temperature";
-            this.txtbox_Temperature.Size = new System.Drawing.Size(88, 22);
-            this.txtbox_Temperature.TabIndex = 12;
+            this.btnRightObstacleIndicator.BackColor = System.Drawing.SystemColors.Info;
+            this.btnRightObstacleIndicator.Location = new System.Drawing.Point(478, 301);
+            this.btnRightObstacleIndicator.Name = "btnRightObstacleIndicator";
+            this.btnRightObstacleIndicator.Size = new System.Drawing.Size(50, 22);
+            this.btnRightObstacleIndicator.TabIndex = 17;
+            this.btnRightObstacleIndicator.UseVisualStyleBackColor = false;
             // 
-            // txtbox_LightSensorValue
+            // lblRightObstacle
             // 
-            this.txtbox_LightSensorValue.Location = new System.Drawing.Point(206, 301);
-            this.txtbox_LightSensorValue.Name = "txtbox_LightSensorValue";
-            this.txtbox_LightSensorValue.Size = new System.Drawing.Size(88, 22);
-            this.txtbox_LightSensorValue.TabIndex = 13;
+            this.lblRightObstacle.AutoSize = true;
+            this.lblRightObstacle.Location = new System.Drawing.Point(362, 306);
+            this.lblRightObstacle.Name = "lblRightObstacle";
+            this.lblRightObstacle.Size = new System.Drawing.Size(101, 17);
+            this.lblRightObstacle.TabIndex = 16;
+            this.lblRightObstacle.Text = "Right Obstacle";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 478);
-            this.Controls.Add(this.txtbox_LightSensorValue);
-            this.Controls.Add(this.txtbox_Temperature);
-            this.Controls.Add(this.lbl_LightSensorAverage);
-            this.Controls.Add(this.lbl_Temperature);
-            this.Controls.Add(this.grpBoxLED);
+            this.Controls.Add(this.btnRightObstacleIndicator);
+            this.Controls.Add(this.lblRightObstacle);
+            this.Controls.Add(this.btnLeftObstacleIndicator);
+            this.Controls.Add(this.lblLeftObstacle);
+            this.Controls.Add(this.txtboxLightSensorValue);
+            this.Controls.Add(this.txtboxTemperature);
+            this.Controls.Add(this.lblLightSensorAverage);
+            this.Controls.Add(this.lblTemperature);
             this.Controls.Add(this.chkBoxLEDBlue);
             this.Controls.Add(this.chkBoxLEDGreen);
             this.Controls.Add(this.chkBoxLEDRed);
@@ -255,8 +243,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.grpBoxLED.ResumeLayout(false);
-            this.grpBoxLED.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,14 +259,14 @@
         private System.Windows.Forms.CheckBox chkBoxLEDRed;
         private System.Windows.Forms.CheckBox chkBoxLEDGreen;
         private System.Windows.Forms.CheckBox chkBoxLEDBlue;
-        private System.Windows.Forms.GroupBox grpBoxLED;
-        private System.Windows.Forms.RadioButton radBtnBlue;
-        private System.Windows.Forms.RadioButton radBtnGreen;
-        private System.Windows.Forms.RadioButton radBtnLEDRed;
-        private System.Windows.Forms.Label lbl_Temperature;
-        private System.Windows.Forms.Label lbl_LightSensorAverage;
-        private System.Windows.Forms.TextBox txtbox_Temperature;
-        private System.Windows.Forms.TextBox txtbox_LightSensorValue;
+        private System.Windows.Forms.Label lblTemperature;
+        private System.Windows.Forms.Label lblLightSensorAverage;
+        private System.Windows.Forms.TextBox txtboxTemperature;
+        private System.Windows.Forms.TextBox txtboxLightSensorValue;
+        private System.Windows.Forms.Label lblLeftObstacle;
+        private System.Windows.Forms.Button btnLeftObstacleIndicator;
+        private System.Windows.Forms.Button btnRightObstacleIndicator;
+        private System.Windows.Forms.Label lblRightObstacle;
     }
 }
 

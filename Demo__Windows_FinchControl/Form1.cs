@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FinchAPI;
 
-namespace Demo__Windows_FinchControl
+namespace Demo__WinForms_FinchControl
 {
     public partial class Form1 : Form
     {
         Finch _myFinch;
         int _speed;
+        int _LEDBrightness;
         int _LEDRedValue;
         int _LEDGreenValue;
         int _LEDBlueValue;
@@ -31,25 +32,69 @@ namespace Demo__Windows_FinchControl
             InitializeComponent();
         }
 
+        //
+        // setup and initialize timer to update sensor values
+        //
         private void InitializeTimer()
         {
-            Timer timer = new Timer();
-            timer.Interval = (1000);
+            Timer timer = new Timer
+            {
+                Interval = (200)
+            };
             timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
         }
 
+        //
+        // update sensor values on form
+        //
         private void Timer_Tick(object o, EventArgs e)
         {
-            txtbox_Temperature.Text = _myFinch.getTemperature().ToString();
-            txtbox_LightSensorValue.Text = (_myFinch.getLightSensors().Average().ToString());
+            txtboxTemperature.Text = _myFinch.getTemperature().ToString();
+            txtboxLightSensorValue.Text = AverageLightSensorValue();
+            btnLeftObstacleIndicator.BackColor = LeftObstacleIndicatorColor();
+            btnRightObstacleIndicator.BackColor = RightObstacleIndicatorColor();
+        }
+
+        private Color LeftObstacleIndicatorColor()
+        {
+            if (_myFinch.isObstacleLeftSide())
+            {
+                return Color.Red;
+            }
+            else
+            {
+                return Color.White;
+            }
+        }
+
+        private Color RightObstacleIndicatorColor()
+        {
+            if (_myFinch.isObstacleRightSide())
+            {
+                return Color.Red;
+            }
+            else
+            {
+                return Color.White;
+            }
+        }
+
+        private string AverageLightSensorValue()
+        {
+            int[] lightSensorValues = _myFinch.getLightSensors();
+            return lightSensorValues.Average().ToString();
         }
 
         private void InitializeFinch()
         {
             _speed = 200;
+            _LEDBrightness = 200;
             _LEDRedValue = 0;
+            _LEDGreenValue = 0;
+            _LEDBlueValue = 0;
         }
+
         private void btnFoward_Click(object sender, EventArgs e)
         {
             _myFinch.setMotors(_speed, _speed);
@@ -60,21 +105,26 @@ namespace Demo__Windows_FinchControl
             _myFinch.setMotors(-_speed, -_speed);
         }
 
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            _myFinch.setMotors(0, _speed);
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            _myFinch.setMotors(100, _speed);
+        }
+
         private void btnStop_Click(object sender, EventArgs e)
         {
             _myFinch.setMotors(0, 0);
-        }
-
-        private void btnQuit_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(1);
         }
 
         private void chkBoxLEDRed_CheckedChanged(object sender, EventArgs e)
         {
             if (chkBoxLEDRed.Checked)
             {
-                _LEDRedValue = 255;
+                _LEDRedValue = _LEDBrightness;
             }
             else
             {
@@ -89,7 +139,7 @@ namespace Demo__Windows_FinchControl
         {
             if (chkBoxLEDGreen.Checked)
             {
-                _LEDGreenValue = 255;
+                _LEDGreenValue = _LEDBrightness;
             }
             else
             {
@@ -103,7 +153,7 @@ namespace Demo__Windows_FinchControl
         {
             if (chkBoxLEDBlue.Checked)
             {
-                _LEDBlueValue = 255;
+                _LEDBlueValue = _LEDBrightness;
             }
             else
             {
@@ -118,25 +168,9 @@ namespace Demo__Windows_FinchControl
             _myFinch.setLED(_LEDRedValue, _LEDGreenValue, _LEDBlueValue);
         }
 
-        private void radBtnLEDRed_CheckedChanged(object sender, EventArgs e)
+        private void btnQuit_Click(object sender, EventArgs e)
         {
-            _LEDRedValue = 255;
-            _LEDGreenValue = 0;
-            _LEDBlueValue = 0;
+            Environment.Exit(1);
         }
-
-        private void radBtnGreen_CheckedChanged(object sender, EventArgs e)
-        {
-            _LEDRedValue = 0;
-            _LEDGreenValue = 255;
-            _LEDBlueValue = 0;
-        }
-
-        private void radBtnBlue_CheckedChanged(object sender, EventArgs e)
-        {
-            _LEDRedValue = 0;
-            _LEDGreenValue = 0;
-            _LEDBlueValue = 255;
-        }        
     }
 }
